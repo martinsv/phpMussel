@@ -3,20 +3,18 @@
  <   |_____] |_____| |_____] |  |  | |     | |______ |______ |______ |        >
      |       |     | |       |  |  | |_____| ______| ______| |______ |_____
 
- Grazie per aver scelto phpMussel, un programma in PHP progettato per rilevare
- trojan, virus, malware ed altre minacce nei file caricati sul tuo sistema
- dovunque il programma stesso è collegato, basato sulle firme di ClamAV ed
- altri.
+ Thank you for using phpMussel, a PHP script designed to detect trojans,
+ viruses, malware and other threats within files uploaded to your system
+ wherever the script is hooked, based on the signatures of ClamAV and others.
 
- PHPMUSSEL COPYRIGHT 2013 e oltre GNU/GPL V.2 Caleb M (Maikuolan).
+ PHPMUSSEL COPYRIGHT 2013 and beyond GNU/GPLv2 by Caleb M (Maikuolan).
 
- Questo documento ed il pacchetto associtato ad esso possono essere scaricati
- liberamente da:
+ This document and its associated package can be downloaded for free from:
  - Sourceforge <http://phpmussel.sourceforge.net/>.
  - GitHub <https://github.com/Maikuolan/phpMussel/>.
 
                                      ~ ~ ~
- Questo file è la traduzione Italiana di phpMussel (11th July 2015).
+ Questo file è la traduzione Italiana di phpMussel (30th August 2015).
  <%phpMussel%/vault/lang/lang.it.inc>
 
 */
@@ -29,13 +27,15 @@ $MusselConfig['lang']['cli_failed_to_complete']='Completamento del processo di c
 $MusselConfig['lang']['cli_is_not_a']=' non è né un file né una cartella.';
 $MusselConfig['lang']['cli_ln2']=" Grazie per aver scelto phpMussel, un programma in PHP progettato per rilevare\n trojan, virus, malware ed altre minacce nei file caricati sul tuo sistama\n dovunque il programma stesso è collegato, basato sulle firme di ClamAV\n ed altri.\n\n PHPMUSSEL COPYRIGHT 2013 e oltre GNU/GPL V.2 Caleb M (Maikuolan).\n\n                                     ~ ~ ~\n\n";
 $MusselConfig['lang']['cli_ln3']=" Attualmente in esecuzione in modalità CLI (interfaccia a riga di comando).\n\n Per controllare un file o una cartella digita 'scan' seguito dal nome del\n file o della cartella e premi Invio; digita 'c' e premi Invio per l\'elenco\n dei comandi in modalità CLI; digita 'q' e premi Invio per uscire.";
+$MusselConfig['lang']['cli_pe1']='Non è un PE file valida!';
+$MusselConfig['lang']['cli_pe2']='PE Sezioni:';
 $MusselConfig['lang']['cli_update_restart']=" Può essere necessario riavviare phpMussel prima che gli aggiornamenti\n diventino effettivi.";
 $MusselConfig['lang']['cli_working']='In corso';
 $MusselConfig['lang']['controls_lockout']='phpMussel blocco di controlli attivato.';
 $MusselConfig['lang']['core_scriptfile_missing']='Nucleo script file mancante! Reinstalla phpMussel.';
 $MusselConfig['lang']['corrupted']='Rilevato PE corrotto';
-$MusselConfig['lang']['denied']='Caricamento negato!';
-$MusselConfig['lang']['denied_other']='Upload Denied! Téléchargement Refusé! Carga Negado! Upload verweigert! アップロード拒否されました! 上载是否认! 上載是否認! Uppladda Nekas! Загрузить Отказано! Augšupielādēt Liegta! 업로드 거부! تحميل نفى!';
+$MusselConfig['lang']['denied']='Caricamento Negato!';
+$MusselConfig['lang']['denied_other']='Upload Denied! Téléchargement Refusé! Carga Negado! Upload verweigert! Upload Geweigerd! アップロード拒否されました! 上传是否认! 上傳是否認! Uppladda Nekas! Загрузка Отказана! Augšupielādēt Liegta! 업로드 거부! Sự tải lên đã bị từ chối! تحميل نفى!';
 $MusselConfig['lang']['denied_reason']='Il tentativo di caricamento è stato bloccato per i motivi elencati di seguito / Your upload was blocked for the reasons listed below:';
 $MusselConfig['lang']['detected']='Rilevato {vn}';
 $MusselConfig['lang']['detected_control_characters']='Rilevati caratteri di controllo';

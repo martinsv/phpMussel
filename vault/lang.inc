@@ -23,10 +23,8 @@
  that this script utilises, without which, the script would likely not exist,
  or at best, would have very limited value <http://www.clamav.net/>.
 
- Special thanks to Sourceforge and GitHub for hosting the project files,
- located at <http://phpmussel.sourceforge.net/> and
- <https://github.com/Maikuolan/phpMussel/>, to Spambot Security for hosting
- the phpMussel discussion forums, located at
+ Special thanks to Sourceforge and GitHub for hosting the project files, to
+ Spambot Security for hosting the phpMussel discussion forums, located at
  <http://www.spambotsecurity.com/forum/viewforum.php?f=55>, and to the
  additional sources of a number of the signatures utilised by phpMussel:
  SecuriteInfo.com <http://www.securiteinfo.com/>, PhishTank
@@ -39,7 +37,7 @@
  - GitHub <https://github.com/Maikuolan/phpMussel/>.
 
                                      ~ ~ ~
- This File: phpMussel v0.7a-BETA (21st July 2015) Language Data.
+ This File: phpMussel v0.7b-BETA (24th August 2015) Language Data.
  <%phpMussel%/vault/lang.inc>
 
                                      ~ ~ ~
@@ -60,7 +58,7 @@ $MusselConfig['lang']=array();
 $MusselConfig['lang']['cli_ln1']="      _____  _     _  _____  _______ _     _ _______ _______ _______           \n <   |_____] |_____| |_____] |  |  | |     | |______ |______ |______ |        >\n     |       |     | |       |  |  | |_____| ______| ______| |______ |_____    \n";
 $MusselConfig['lang']['cli_prompt']="\n\n>> ";
 if(!isset($MusselConfig['general']['lang_override']))$MusselConfig['general']['lang_override']=0;
-if(!isset($MusselConfig['lang_acceptable']))$MusselConfig['lang_acceptable']=',en,de,es,fr,id,it,ja,nl,pt,ru,zh,zh-TW,';
+if(!isset($MusselConfig['lang_acceptable']))$MusselConfig['lang_acceptable']=',en,de,es,fr,id,it,ja,nl,pt,ru,vi,zh,zh-TW,';
 if(!isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))$_SERVER['HTTP_ACCEPT_LANGUAGE']='';
 if($MusselConfig['general']['lang_override']&&$_SERVER['HTTP_ACCEPT_LANGUAGE'])
 	{

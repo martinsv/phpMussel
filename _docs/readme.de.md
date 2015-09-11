@@ -93,12 +93,12 @@ phpMussel ist dafür vorgesehen, fast vollständig autonom zu funktionieren, ohn
 
 Das Scannen von Dateiuploads ist automatisiert und standardmäßig eingeschaltet, Sie müssen nichts weiter unternehmen.
 
-Sie sind jedoch auch in der Lage, phpMussel anzuweisen, nach Dateien, Ordnern oder Archiven zu scannen, die Sie implizit angeben. Um dies auszuführen, stellen Sie sicher, dass diese Konfiguration in der `phpmussel.ini` festgelegt ist (Cleanup muß deaktiviert sein). Erstellen Sie eine mit phpMussel eingebundene PHP-Datei mit folgender Funktion:
+Sie sind jedoch auch in der Lage, phpMussel anzuweisen, spezifische Dateien, Ordner und/oder Archive zu scannen. Um dies auszuführen, stellen Sie sicher, dass diese Konfiguration in der `phpmussel.ini` festgelegt ist (`cleanup` muß deaktiviert sein). Erstellen Sie eine mit phpMussel eingebundene PHP-Datei mit folgender Funktion:
 
 `phpMussel($what_to_scan,$output_type,$output_flatness);`
 
 - `$what_to_scan` kann ein String, ein Array oder ein Array von Arrays sein und gibt an, welche Datei, Dateien, Ordner und/oder Ordner gescannt werden sollen.
-- `$output_type` ist ein boolescher Wert und gibt an, in welchem Format die Scan-Ergebnisse zurückgegeben werden sollen. False weist die Funktion an, Ergebnisse als Integer (Ganzzahl) zurückzugeben (ein Rückgabewert von -3 zeigt an, dass es Probleme mit den phpMussel Signatur-Dateien oder Signatur-Map-Dateien gibt und dass sie wahrscheinlich fehlen oder beschädigt sind, -2 zeigt an, dass beschädigte Dateien gefunden wurden und der Scan nicht abgeschlossen wurde, -1 zeigt an, dass fehlende Erweiterungen oder Addons von PHP benötigt werden, um den Scan durchzuführen und der Scan deshalb nicht abgeschlossen wurde, 0 zeigt an, dass das Ziel nicht existiert und somit nichts überprüft werden konnte, 1 zeigt an, dass das Ziel erfolgreich geprüft wurde und keine Probleme erkannt wurden, 2 zeigt an, dass das Ziel erfolgreich geprüft wurde, jedoch Probleme gefunden wurden). True weist die Funktion an, Ergebnisse als lesbaren  zurückzugeben. Zusätzlich können in beiden Fällen auf die Ergebnisse über globale Variablen nach dem Scannen zugegriffen werden. Diese Variable ist optional und standardmäßig auf false.
+- `$output_type` ist ein boolescher Wert und gibt an, in welchem Format die Scan-Ergebnisse zurückgegeben werden sollen. False weist die Funktion an, Ergebnisse als Integer (Ganzzahl) zurückzugeben (ein Rückgabewert von -3 zeigt an, dass es Probleme mit den phpMussel Signatur-Dateien oder Signatur-Map-Dateien gibt und dass sie wahrscheinlich fehlen oder beschädigt sind, -2 zeigt an, dass beschädigte Dateien gefunden wurden und der Scan nicht abgeschlossen wurde, -1 zeigt an, dass fehlende Erweiterungen oder Addons von PHP benötigt werden, um den Scan durchzuführen und der Scan deshalb nicht abgeschlossen wurde, 0 zeigt an, dass das Ziel nicht existiert und somit nichts überprüft werden konnte, 1 zeigt an, dass das Ziel erfolgreich geprüft wurde und keine Probleme erkannt wurden, 2 zeigt an, dass das Ziel erfolgreich geprüft wurde, jedoch Probleme gefunden wurden). True weist die Funktion an, Ergebnisse als lesbaren Text zurückzugeben. Zusätzlich können in beiden Fällen auf die Ergebnisse über globale Variablen nach dem Scannen zugegriffen werden. Diese Variable ist optional und standardmäßig auf false.
 - `$output_flatness` ist ein boolescher Wert und gibt der Funktion an, ob die Ergebnisse vom Scannen (falls mehrere Scan-Ziele existieren) als Array oder String zurückgegeben werden sollen. False wird die Ergebnisse als Array zurückgeben. True wird die Ergebnisse als String zurückgeben. Diese Variable ist optional und standardmäßig auf false.
 
 Beispiel:
@@ -209,7 +209,7 @@ enable
 
 update
 - Benötigtes Passwort: script_password
-- Weitere Bedingungen: update.dat und update.inc müssen vorhanden sein.
+- Weitere Bedingungen: `update.dat` und `update.inc` müssen vorhanden sein.
 - Benötigte Parameter: (keine)
 - Optionale Parameter: (keine)
 - Beispiele: `?pword=[script_password]&phpmussel=update`
@@ -220,7 +220,7 @@ greylist
 - Weitere Bedingungen: (keine)
 - Benötigte Parameter: [Name der Signatur für die Greylist]
 - Optionale Parameter: (keine)
-- Beispiel: `?pword=[script_password]&phpmussel=greylist&musselvar=[Signature]`
+- Beispiel: `?pword=[script_password]&phpmussel=greylist&musselvar=[Signatur]`
 - Zweck: Fügt eine Signatur zur Greylist hinzu.
 
 greylist_clear
@@ -261,14 +261,24 @@ Datei                                      | Beschreibung
 /web.config                                | Eine ASP.NET-Konfigurationsdatei (in diesem Fall zum Schutz des Verzeichnisses `/vault` vor einem nicht authorisierten Zugriff, sofern das Script auf einem auf der ASP.NET-Technologie basierenden Server installiert wurde).
 /_docs/                                    | Verzeichnis für die Dokumentationen (beinhaltet verschiedene Dateien).
 /_docs/change_log.txt                      | Eine Auflistung der Änderungen des Scripts der verschiedenen Versionen (für die korrekte Funktion des Scripts nicht notwendig).
+/_docs/readme.de.md                        | Dokumentation: DEUTSCH
 /_docs/readme.de.txt                       | Dokumentation: DEUTSCH
+/_docs/readme.en.md                        | Dokumentation: ENGLISH
 /_docs/readme.en.txt                       | Dokumentation: ENGLISH
+/_docs/readme.es.md                        | Dokumentation: ESPAÑOL
 /_docs/readme.es.txt                       | Dokumentation: ESPAÑOL
+/_docs/readme.fr.md                        | Dokumentation: FRANÇAIS
 /_docs/readme.fr.txt                       | Dokumentation: FRANÇAIS
+/_docs/readme.id.md                        | Dokumentation: BAHASA INDONESIA
 /_docs/readme.id.txt                       | Dokumentation: BAHASA INDONESIA
+/_docs/readme.it.md                        | Dokumentation: ITALIANO
 /_docs/readme.it.txt                       | Dokumentation: ITALIANO
+/_docs/readme.nl.md                        | Dokumentation: NEDERLANDSE
 /_docs/readme.nl.txt                       | Dokumentation: NEDERLANDSE
+/_docs/readme.pt.md                        | Dokumentation: PORTUGUÊS
 /_docs/readme.pt.txt                       | Dokumentation: PORTUGUÊS
+/_docs/readme.ru.md                        | Dokumentation: РУССКИЙ
+/_docs/readme.ru.txt                       | Dokumentation: РУССКИЙ
 /_docs/signatures_tally.txt                | Netto-Veränderungs-Anzahl von enthaltenen Signaturen (für die korrekte Funktion des Scripts nicht notwendig).
 /_testfiles/                               | Verzeichnis für Testdateien (beinhaltet verschiedene Dateien). Alle enthaltenen Dateien dienen zur Überprüfung, ob phpMussel auf Ihrem System ordnungsgemäß installiert wurde. Sie müssen dieses Verzeichnis oder die Dateien nicht hochladen, sofern Sie keinen solchen Test durchführen möchten.
 /_testfiles/ascii_standard_testfile.txt    | Testdatei zur Überprüfung der normierten ASCII-Signaturerkennung.
@@ -284,8 +294,8 @@ Datei                                      | Beschreibung
 /_testfiles/ole_testfile.ole               | Testdatei zur Überprüfung der OLE-Signaturerkennung.
 /_testfiles/pdf_standard_testfile.pdf      | Testdatei zur Überprüfung der PDF-Signaturerkennung.
 /_testfiles/pe_sectional_testfile.exe      | Testdatei zur Überprüfung der PE-Sectional-Signaturerkennung.
-/_testfiles/swf_standard_testfile.swf      | Testdatei zur Überprüfung der SWF-Signaturen.
-/_testfiles/xdp_standard_testfile.xdp      | Testdatei zur Überprüfung der XML/XDP-Datenblock-Signaturen.
+/_testfiles/swf_standard_testfile.swf      | Testdatei zur Überprüfung der Shockwave-Signaturerkennung.
+/_testfiles/xdp_standard_testfile.xdp      | Testdatei zur Überprüfung der XML/XDP-Datenblock-Signaturerkennung.
 /vault/                                    | Vault-Verzeichnis (beinhaltet verschiedene Dateien).
 /vault/cache/                              | Cache-Verzeichnis (für temporäre Daten).
 /vault/cache/.htaccess                     | Ein hypertext access file (in diesem Fall zum Schutz von sensiblen Dateien des Scripts vor einem nicht authorisierten Zugriff).
@@ -301,8 +311,9 @@ Datei                                      | Beschreibung
 /vault/lang/lang.nl.inc                    | Sprachdateien: NEDERLANDSE
 /vault/lang/lang.pt.inc                    | Sprachdateien: PORTUGUÊS
 /vault/lang/lang.ru.inc                    | Sprachdateien: РУССКИЙ
+/vault/lang/lang.vi.inc                    | Sprachdateien: TIẾNG VIỆT
 /vault/lang/lang.zh.inc                    | Sprachdateien: 中文（简体）
-/vault/lang/lang.zh-tw.inc                 | Sprachdateien: 中文（傳統）
+/vault/lang/lang.zh-TW.inc                 | Sprachdateien: 中文（傳統）
 /vault/quarantine/                         | Quarantäne-Verzeichnis (enthält Dateien in Quarantäne).
 /vault/quarantine/.htaccess                | Ein hypertext access file (in diesem Fall zum Schutz von sensiblen Dateien des Scripts vor einem nicht authorisierten Zugriff).
 /vault/.htaccess                           | Ein hypertext access file (in diesem Fall zum Schutz von sensiblen Dateien des Scripts vor einem nicht authorisierten Zugriff).
@@ -325,14 +336,14 @@ Datei                                      | Beschreibung
 /vault/elf_custom_standard.cvd             | Datei der ELF-Signaturen.
 /vault/elf_mussel_regex.cvd                | Datei der ELF-Signaturen.
 /vault/elf_mussel_standard.cvd             | Datei der ELF-Signaturen.
-/vault/exe_clamav_regex.cvd                | Datei der Portable Executable Datei (EXE)-Signaturen.
-/vault/exe_clamav_regex.map                | Datei der Portable Executable Datei (EXE)-Signaturen.
-/vault/exe_clamav_standard.cvd             | Datei der Portable Executable Datei (EXE)-Signaturen.
-/vault/exe_clamav_standard.map             | Datei der Portable Executable Datei (EXE)-Signaturen.
-/vault/exe_custom_regex.cvd                | Datei der Portable Executable Datei (EXE)-Signaturen.
-/vault/exe_custom_standard.cvd             | Datei der Portable Executable Datei (EXE)-Signaturen.
-/vault/exe_mussel_regex.cvd                | Datei der Portable Executable Datei (EXE)-Signaturen.
-/vault/exe_mussel_standard.cvd             | Datei der Portable Executable Datei (EXE)-Signaturen.
+/vault/exe_clamav_regex.cvd                | Datei der Portable-Executable-Signaturen.
+/vault/exe_clamav_regex.map                | Datei der Portable-Executable-Signaturen.
+/vault/exe_clamav_standard.cvd             | Datei der Portable-Executable-Signaturen.
+/vault/exe_clamav_standard.map             | Datei der Portable-Executable-Signaturen.
+/vault/exe_custom_regex.cvd                | Datei der Portable-Executable-Signaturen.
+/vault/exe_custom_standard.cvd             | Datei der Portable-Executable-Signaturen.
+/vault/exe_mussel_regex.cvd                | Datei der Portable-Executable-Signaturen.
+/vault/exe_mussel_standard.cvd             | Datei der Portable-Executable-Signaturen.
 /vault/filenames_clamav.cvd                | Datei der Dateinamen-Signaturen.
 /vault/filenames_custom.cvd                | Datei der Dateinamen-Signaturen.
 /vault/filenames_mussel.cvd                | Datei der Dateinamen-Signaturen.
@@ -405,6 +416,8 @@ Datei                                      | Beschreibung
 /vault/pe_clamav.cvd                       | Datei der PE-Sectional-Signaturen.
 /vault/pe_custom.cvd                       | Datei der PE-Sectional-Signaturen.
 /vault/pe_mussel.cvd                       | Datei der PE-Sectional-Signaturen.
+/vault/pex_custom.cvd                      | Datei der PE-Erweitert-Signaturen.
+/vault/pex_mussel.cvd                      | Datei der PE-Erweitert-Signaturen.
 /vault/phpmussel.inc                       | Core Script (absolut notwendig)!
 /vault/phpmussel.ini                       | Konfigurationsdatei; Beinhaltet alle Konfigurationsmöglichkeiten von phpMussel (absolut notwendig)!
 ※ /vault/scan_log.txt                     | Eine Aufzeichnung aller von phpMussel gescannten Objekte.
@@ -419,6 +432,7 @@ Datei                                      | Beschreibung
 /vault/swf_mussel_standard.cvd             | Datei der Shockwave-Signaturen.
 /vault/switch.dat                          | Diese Datei definiert bestimmte Variablen.
 /vault/template.html                       | Template Datei; Template für die HTML-Ausgabe mit der Nachricht, dass der Dateiupload von phpMussel blockiert wurde (Nachricht, die dem Nutzer angezeigt wird).
+/vault/template_custom.html                | Template Datei; Template für die HTML-Ausgabe mit der Nachricht, dass der Dateiupload von phpMussel blockiert wurde (Nachricht, die dem Nutzer angezeigt wird).
 /vault/update.dat                          | Datei beinhaltet Versionsinformationen des Scripts und der Signaturen. Diese Datei ist notwendig, wenn Sie phpMussel automatisch oder mittels Browser aktualisieren wollen.
 /vault/update.inc                          | Update Script; Wird nur für die automatische und manuelle Aktualisierung mittels Browser benötigt.
 /vault/whitelist_clamav.cvd                | Datei-spezifische Whitelist.
@@ -470,7 +484,7 @@ Generelle Konfiguration von phpMussel.
 - Wie script_password, allerdings nur zur Ausgabe des Inhalts von scan_log und scan_kills. Separate Passworte sind nützlich, wenn Sie jemandem Zugang zur einen Funktionalität gewähren wollen, aber nicht zur anderen. - Kein Einfluss im CLI-Modus.
 
 "cleanup"
-- Löscht die Scriptvariablen und den Cache nach der Ausführung. Sollten Sie das Script nach der Überprüfung des Uploads nicht mehr nutzen, stellen Sie diese Option auf "yes", um die Speichernutzung zu minimieren. Verwenden Sie das Script noch für weitere Zwecke, stellen Sie die Option auf "no", um unnötiges mehrfaches Einlesen der Daten in den Speicher zu vermeiden. Normalerweise sollte diese Option auf "yes" gesetzt werden, allerdings können Sie das Script dann nur zur Dateiüberprüfung verwenden.
+- Löscht die Scriptvariablen und den Cache nach der Ausführung. False = Nicht löschen, True = Löschen [Standardeinstellung]. Sollten Sie das Script nach der Überprüfung des Uploads nicht mehr nutzen, stellen Sie diese Option auf `true`, um die Speichernutzung zu minimieren. Verwenden Sie das Script noch für weitere Zwecke, stellen Sie die Option auf `false`, um unnötiges mehrfaches Einlesen der Daten in den Speicher zu vermeiden. Normalerweise sollte diese Option auf `true` gesetzt werden, allerdings können Sie das Script dann nur zur Dateiüberprüfung verwenden.
 - Kein Einfluss im CLI-Modus.
 
 "scan_log"
@@ -483,10 +497,10 @@ Generelle Konfiguration von phpMussel.
 - Ort der IP-Adresse der aktuellen Verbindung im gesamten Datenstrom (nützlich für Cloud-Services) Standardeinstellung = REMOTE_ADDR. Achtung: Ändern Sie diesen Wert nur, wenn Sie wissen, was Sie tun!
 
 "forbid_on_block"
-- Zurückgegebener 403-HTTP-Header bei einem blockierten Dateiupload. 0 = Nein (200) [Standardeinstellung], 1 Ja (403).
+- Zurückgegebener 403-HTTP-Header bei einem blockierten Dateiupload. 0 = Nein (200) [Standardeinstellung], 1 = Ja (403).
 
 "delete_on_sight"
-- Diese Option weist das Script an, Dateien während eines Scans sofort zu löschen, wenn ein Erkennungsmerkmal, ob durch Signaturen oder andere Methoden, zutrifft. Dateien, die als nicht infiziert eingestuft werden, werden nicht berührt. Im Falle von Archiven wird das gesamte Archiv gelöscht, auch wenn nur eine einzige Datei im Archiv infiziert sein sollte. Normalerweise ist es bei einem Dateiupload nicht notwendig, diese Option zu aktivieren, da PHP nach der Ausführung von Scripten den Inhalt vom Cache löscht, d.h. PHP löscht jede Datei, die über den Server hochgeladen wird, sofern Sie nicht verschoben, kopiert oder bereits gelöscht wurde. Diese Option wurde als zusätzliches Maß an Sicherheit hinzugefügt, außerdem für Systeme, deren PHP-Installation nicht dem üblichen Verhalten entspricht. 0 - Nach der Überprüfung wird die Datei so belassen [Standardeinstellung], 1 - Nach der Überprüfung wird die Datei sofort gelöscht, sofern Sie infiziert ist.
+- Diese Option weist das Script an, Dateien während eines Scans sofort zu löschen, wenn ein Erkennungsmerkmal, ob durch Signaturen oder andere Methoden, zutrifft. Dateien, die als nicht infiziert eingestuft werden, werden nicht berührt. Im Falle von Archiven wird das gesamte Archiv gelöscht, auch wenn nur eine einzige Datei im Archiv infiziert sein sollte. Normalerweise ist es bei einem Dateiupload nicht notwendig, diese Option zu aktivieren, da PHP nach der Ausführung von Scripten den Inhalt vom Cache löscht, d.h. PHP löscht jede Datei, die über den Server hochgeladen wird, sofern Sie nicht verschoben, kopiert oder bereits gelöscht wurde. Diese Option wurde als zusätzliches Maß an Sicherheit hinzugefügt, außerdem für Systeme, deren PHP-Installation nicht dem üblichen Verhalten entspricht. False = Nach der Überprüfung wird die Datei so belassen [Standardeinstellung], True = Nach der Überprüfung wird die Datei sofort gelöscht, sofern Sie infiziert ist.
 
 "lang"
 - Gibt die Standardsprache für phpMussel an.
@@ -498,7 +512,7 @@ Generelle Konfiguration von phpMussel.
 - Die `lang_acceptable` Anweisung sagt phpMussel, welche Sprachen von dem Script von `lang` oder von `HTTP_ACCEPT_LANGUAGE` akzeptiert werden. Diese Anweisung sollte **NUR** angepasst werden, falls du eigene angepasste Sprachen hinzufügst oder zwangsweise Sprachdateien entfernst. Diese Anweisung ist ein mit Kommata getrennter String der Codes der benutzten Sprachen, die von dem Script akzeptiert werden.
 
 "quarantine_key"
-- phpMussel ist in der Lage, Versuche von Datei-Uploads in einem Quarantäne-Verzeichnis zu isolieren, sofern Sie dies tun wollen. Nutzer, die nur daran interessiert sind, ihre Webauftritte oder ihre Hosting-Umgebung zu schützen ohne das Interesse, die markierten Dateien weitergehend zu untersuchen, sollten diese Funktionalität deaktivieren, Nutzer, die diese Dateien zur Ananlyse auf Malware o.ä. benötigen, sollten diese Funktion aktivieren. Die Isolation von markierten Dateien kann manchmal auch bei der Fehlersuche von Fehlalarmen helfen, wenn dies häufiger bei Ihnen auftritt. Um die Quarantänefunktion zu deaktivieren, lassen Sie die Richtlinie `quarantine_key` leer oder löschen Sie den Inhalt dieser Richtlinie, wenn sie nicht bereits leer ist. Um die Quarantänefunktion zu aktivieren, geben Sie einen Wert ein. Der "quarantine_key" ist ein wichtiges Sicherheitsmerkmal der Quarantänfunktionen, um zu verhindern, dass die Quarantänefunktionen einem Exploit ausgesetzt wird und gespeicherte Daten in der Quarantäneumgebung ausgeführt werden können. Der Wert des "quarantine_key" sollte so behandelt werden, wie Ihre Passwörter: Je länger, desto besser, und halten Sie sie geheim. Optimal in Verbindung mit "delete_on_sight".
+- phpMussel ist in der Lage, Versuche von Datei-Uploads in einem Quarantäne-Verzeichnis zu isolieren, sofern Sie dies tun wollen. Nutzer, die nur daran interessiert sind, ihre Webauftritte oder ihre Hosting-Umgebung zu schützen ohne das Interesse, die markierten Dateien weitergehend zu untersuchen, sollten diese Funktionalität deaktivieren, Nutzer, die diese Dateien zur Ananlyse auf Malware o.ä. benötigen, sollten diese Funktion aktivieren. Die Isolation von markierten Dateien kann manchmal auch bei der Fehlersuche von Fehlalarmen helfen, wenn dies häufiger bei Ihnen auftritt. Um die Quarantänefunktion zu deaktivieren, lassen Sie die Richtlinie `quarantine_key` leer oder löschen Sie den Inhalt dieser Richtlinie, wenn sie nicht bereits leer ist. Um die Quarantänefunktion zu aktivieren, geben Sie einen Wert ein. Der `quarantine_key` ist ein wichtiges Sicherheitsmerkmal der Quarantänfunktionen, um zu verhindern, dass die Quarantänefunktionen einem Exploit ausgesetzt wird und gespeicherte Daten in der Quarantäneumgebung ausgeführt werden können. Der Wert des `quarantine_key` sollte so behandelt werden, wie Ihre Passwörter: Je länger, desto besser, und halten Sie sie geheim. Optimal in Verbindung mit `delete_on_sight`.
 
 "quarantine_max_filesize"
 - Die maximal zulässige Dateigröße von Dateien, die in der Quarantäne isoliert werden sollen. Dateien, die größer sind als der angegebene Wert, werden NICHT im Quarantäneverzeichnis gespeichert. Diese Richtlinie ist wichtig, um es einem potentiellen Angreifer zu erschweren, die Quarantäne -und somit Ihren zugesicherten Speicher auf Ihrem Hostservice- mit unerwünschten Daten zu überfluten. Wert in KB. Standardeinstellung =2048 =2048KB =2MB.
@@ -521,92 +535,96 @@ Konfiguration der Signaturen.
 - %%%_custom = Ihre eigenen Signaturen (sofern Sie welche erstellt haben).
 - %%%_mussel = phpMussel-Signaturen, nicht aus der ClamAV-Datenbank.
 
-Scan mit den MD5-Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan mit den MD5-Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "md5_clamav"
 - "md5_custom"
 - "md5_mussel"
 
-Scan mit den generellen Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan mit den generellen Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "general_clamav"
 - "general_custom"
 - "general_mussel"
 
-Scan mit den normierten ASCII Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan mit den normierten ASCII Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "ascii_clamav"
 - "ascii_custom"
 - "ascii_mussel"
 
-Scan mit den normierten HTML Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan mit den normierten HTML Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "html_clamav"
 - "html_custom"
 - "html_mussel"
 
-Scan von PE-Dateien (Portable Executable, EXE, DLL, etc.) mit den PE-Sectional-Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan von PE-Dateien (Portable Executable, EXE, DLL, etc.) mit den PE-Sectional-Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "pe_clamav"
 - "pe_custom"
 - "pe_mussel"
 
-Scan von PE-Dateien (Portable Executable, EXE, DLL, etc.) mit den PE-Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan von PE-Dateien (Portable Executable, EXE, DLL, etc.) mit den PE-Erweitert-Signaturen? False = Nein, True = Ja [Standardeinstellung].
+- "pex_custom"
+- "pex_mussel"
+
+Scan von PE-Dateien (Portable Executable, EXE, DLL, etc.) mit den PE-Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "exe_clamav"
 - "exe_custom"
 - "exe_mussel"
 
-Scan von ELF-Dateien mit den ELF-Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan von ELF-Dateien mit den ELF-Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "elf_clamav"
 - "elf_custom"
 - "elf_mussel"
 
-Scan von Mach-O-Dateien (OSX, etc.) mit den Mach-O-Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan von Mach-O-Dateien (OSX, etc.) mit den Mach-O-Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "macho_clamav"
 - "macho_custom"
 - "macho_mussel"
 
-Scan von Bilddateien mit den Grafik-Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan von Bilddateien mit den Grafik-Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "graphics_clamav"
 - "graphics_custom"
 - "graphics_mussel"
 
-Scan von Archivinhalten mit den Archiv-Metadata-Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan von Archivinhalten mit den Archiv-Metadata-Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "metadata_clamav"
 - "metadata_custom"
 - "metadata_mussel"
 
-Scan von OLE-Objekten mit den OLE-Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan von OLE-Objekten mit den OLE-Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "ole_clamav"
 - "ole_custom"
 - "ole_mussel"
 
-Scan von Dateinamen mit den Dateinamen-Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan von Dateinamen mit den Dateinamen-Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "filenames_clamav"
 - "filenames_custom"
 - "filenames_mussel"
 
-Scan mit phpMussel_mail() erlauben? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan mit phpMussel_mail() erlauben? False = Nein, True = Ja [Standardeinstellung].
 - "mail_clamav"
 - "mail_custom"
 - "mail_mussel"
 
-Aktivieren Datei-spezifischer Whitelist? 0 = Nein, 1 = Ja [Standardeinstellung].
+Aktivieren Datei-spezifischer Whitelist? False = Nein, True = Ja [Standardeinstellung].
 - "whitelist_clamav"
 - "whitelist_custom"
 - "whitelist_mussel"
 
-Scan von XML/XDP-Datenblöcken mit den XML/XDP-Datenblock-Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan von XML/XDP-Datenblöcken mit den XML/XDP-Datenblock-Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "xmlxdp_clamav"
 - "xmlxdp_custom"
 - "xmlxdp_mussel"
 
-Scan mit den Komplex-Erweitert-Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan mit den Komplex-Erweitert-Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "coex_clamav"
 - "coex_custom"
 - "coex_mussel"
 
-Scan mit den PDF-Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan mit den PDF-Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "pdf_clamav"
 - "pdf_custom"
 - "pdf_mussel"
 
-Scan mit den Shockwave-Signaturen? 0 = Nein, 1 = Ja [Standardeinstellung].
+Scan mit den Shockwave-Signaturen? False = Nein, True = Ja [Standardeinstellung].
 - "swf_clamav"
 - "swf_custom"
 - "swf_mussel"
@@ -624,6 +642,24 @@ Optionen für das Größenlimit der Übereinstimmungen. Ändern Sie diese Werte 
 
 "fail_extensions_silently"
 - Soll phpMussel melden, wenn Dateierweiterungen fehlen? Wenn fail_extensions_silently deaktiviert ist, werden fehlende Dateierweiterungen beim Scannen gemeldet und wenn fail_extensions_silently aktiviert ist, werden fehlende Dateierweiterungen ignoriert und beim Scan gemeldet, dass es mit diesen Dateien keine Probleme gibt. Das Deaktivieren dieser Anweisung kann möglicherweise deine Sicherheit erhöhen, kann aber auch zu mehr Falschmeldungen führen. 0 = Deaktiviert, 1 = Aktiviert [Standardeinstellung].
+
+"detect_adware"
+- Soll phpMussel Signaturen für die Erkennung von Adware parsen? False = Nein, True = Ja [Standardeinstellung].
+
+"detect_joke_hoax"
+- Soll phpMussel Signaturen für die Erkennung von Scherz/Fake-Malware/Viren parsen? False = Nein, True = Ja [Standardeinstellung].
+
+"detect_pua_pup"
+- Soll phpMussel Signaturen für die Erkennung von PUAs/PUPs parsen? False = Nein, True = Ja [Standardeinstellung].
+
+"detect_packer_packed"
+- Soll phpMussel Signaturen für die Erkennung von Packern und komprimierten Daten parsen? False = Nein, True = Ja [Standardeinstellung].
+
+"detect_shell"
+- Soll phpMussel Signaturen für die Erkennung von Shell-Scripten parsen? False = Nein, True = Ja [Standardeinstellung].
+
+"detect_deface"
+- Soll phpMussel Signaturen für die Erkennung von Defacements und Defacer parsen? False = Nein, True = Ja [Standardeinstellung].
 
 ####"files" (Kategorie)
 Generelle Konfigurationen für die Handhabung von Dateien.
@@ -680,7 +716,7 @@ Chameleon-Angriffserkennung: 0 = deaktiviert, 1 = aktiviert.
 - Suche nach Office-Dokumenten, deren Header nicht korrekt sind (Unterstützt: DOC, DOT, PPS, PPT, XLA, XLS, WIZ).
 
 "chameleon_to_img"
-- Suche nach Bildern, deren Header nicht korrekt sind (Unterstützt: BMP, DIB, PNG, GIF, JPEG, JPG, XCF, PSD, PDD).
+- Suche nach Bildern, deren Header nicht korrekt sind (Unterstützt: BMP, DIB, PNG, GIF, JPEG, JPG, XCF, PSD, PDD, WEBP).
 
 "chameleon_to_pdf"
 - Suche nach PDF-Dateien, deren Header nicht korrekt sind.
@@ -689,7 +725,7 @@ Chameleon-Angriffserkennung: 0 = deaktiviert, 1 = aktiviert.
 - Erkannte Archiv-Dateierweiterungen (Format ist CSV; nur bei Problemen hinzufügen oder entfernen; unnötiges Entfernen könnte Fehlalarme für Archive auslösen, unnötiges Hinzufügen fügt das zur Whitelist hinzu, was vorher als möglicher Angriff definiert wurde; Ändern Sie diese Liste äußerst vorsichtig; Beachten Sie, dass dies keinen Einfluß darauf hat, wozu Archive fähig sind und nicht auf Inhaltsebene analysiert werden können). Diese Liste enthält die Archivformate, die am häufigsten von der Mehrzahl der Systeme und CMS verwendet werden, ist aber absichtlich nicht vollständig.
 
 "general_commands"
-- Soll der Inhalt von Dateien auf allgemeine Befehle wie eval(), exec() und include() durchsucht werden? 0 - Nein (nicht überprüfen) [Standardeinstellung], 1 - Ja (überprüfen). Stellen Sie diese Option aus, wenn Sie vorhaben, folgende Dateien mittels Browser auf Ihr System oder CMS hochzuladen: PHP, JavaScript, HTML, Python, Perl usw. Aktivieren Sie diese Option, falls Sie keine zusätzlichen Schutzmechanismen auf Ihrem System haben und nicht planen, solche Dateien hochzuladen. Verwenden Sie zusätzliche Sicherheitssoftware in Verbindung mit phpMussel wie ZB Block, ist es nicht notwendig, diese Option zu aktivieren, phpMussel würde nur unnötigerweise (im Kontext dieser Option) danach suchen, wogegen das System bereits geschützt ist.
+- Soll der Inhalt von Dateien auf allgemeine Befehle wie `eval()`, `exec()` und `include()` durchsucht werden? 0 - Nein (nicht überprüfen) [Standardeinstellung], 1 - Ja (überprüfen). Stellen Sie diese Option aus, wenn Sie vorhaben, folgende Dateien mittels Browser auf Ihr System oder CMS hochzuladen: PHP, JavaScript, HTML, Python, Perl usw. Aktivieren Sie diese Option, falls Sie keine zusätzlichen Schutzmechanismen auf Ihrem System haben und nicht planen, solche Dateien hochzuladen. Verwenden Sie zusätzliche Sicherheitssoftware in Verbindung mit phpMussel wie ZB Block, ist es nicht notwendig, diese Option zu aktivieren, phpMussel würde nur unnötigerweise (im Kontext dieser Option) danach suchen, wogegen das System bereits geschützt ist.
 
 "block_control_characters"
 - Sollen Dateien, welche Steuerzeichen (andere als Newline/Zeilenumbruch) enthalten, blockiert werden? (`[\x00-\x08\x0b\x0c\x0e\x1f\x7f]`) Sofern Sie _**NUR**_ reinen Text hochladen, können Sie diese Option aktivieren, um Ihrem System zusätzlichen Schutz zu bieten. Sollten Sie anderes als reinen Text hochladen, werden bei aktivierter Option Fehlalarme ausgelöst. 0 - Nicht blockieren [Standardeinstellung], 1 - Blockieren.
@@ -742,6 +778,14 @@ Hinweis: Unabhängig von der Verdachts-Stufe wird jede Datei auf der Whitelist o
 "vt_quota_rate" und "vt_quota_time"
 - Laut der Virus Total API Dokumentation, "ist diese auf 4 Anfragen irgendeiner Art in einer 1 Minuten Zeitspanne limitiert. Falls du einen Honeyclient, Honeypot oder einen andere Automatisierung verwendest, was etwas zu VirusTotal beiträgt und nicht nur Berichte abruft, bist du für ein höheres Limit berechtigt". Standardmäßig wird sich phpMussel strikt daran halten, da aber diese Limits erhöht werden können, stehen dir diese zwei Direktiven zur Verfügung um phpMussel anzuweisen, an welches Limit es sich halten soll. Außer du bist dazu aufgefordert, ist es nicht empfohlen diese Werte zu erhöhen. Solltest du aber Probleme bezogen auf das Erreichen des Limits haben, _**SOLLTE**_ das Verringern dieser Werte manchmal helfen. Dein Limit wird festgelegt als `vt_quota_rate` Anfragen jeder Art in jeder `vt_quota_time` Minuten Zeitspanne.
 
+####"template_data" (Kategorie)
+Anweisungen/Variablen für Templates und Themes.
+
+Template-Daten bezieht sich auf die HTML-Ausgabe die verwendet wird, um die "Upload blockiert"-Nachricht Benutzern anzuzeigen, wenn eine hochgeladene Datei blockiert wird. Falls Sie benutzerdefinierte Themes für phpMussel verwenden, wird die HTML-Ausgabe von der `template_custom.html`-Datei verwendet, ansonsten wird die HTML-Ausgabe von der `template.html`-Datei verwendet. Variablen, die in diesem Bereich der Konfigurations-Datei festgelegt werden, werden als HTML-Ausgabe geparst, indem jede Variable mit geschweiften Klammern innerhalb der HTML-Ausgabe mit den entsprechenden Variablen-Daten ersetzt wird. Zum Beispiel, wenn `foo="bar"`, dann wird jedes Exemplar mit `<p>{foo}</p>` innerhalb der HTML-Ausgabe zu `<p>bar</p>`.
+
+"css_url"
+- Die Template-Datei für benutzerdefinierte Themes verwendet externe CSS-Regeln, wobei die Template-Datei für das normale Theme interne CSS-Regeln verwendet. Um phpMussel anzuweisen, die Template-Datei für benutzerdefinierte Themes zu verwenden, geben Sie die öffentliche HTTP-Adresse von den CSS-Dateien des benutzerdefinierten Themes mit der `css_url`-Variable an. Wenn Sie diese Variable leer lassen, wird phpMussel die Template-Datei für das normale Theme verwenden.
+
 ---
 
 
@@ -775,6 +819,13 @@ Alle PE-Sectional-Signaturen besitzen folgendes Format:
 
 HASH ist der MD5-Hash einer PE-Sektion der Datei, FILESIZE ist die gesamte Größe der PE-Sektion und NAME ist der Name, um die Signatur zu benennen.
 
+####*PE-ERWEITERT-SIGNATUREN*
+Alle PE-Erweitert-Signaturen besitzen folgendes Format:
+
+`$VAR:HASH:SIZE:NAME`
+
+Wo $VAR der Name der zu prüfenden PE-Variable  ist, HASH ist der MD5-Hash von dieser Variable, SIZE ist die gesamte Größe von dieser Variable und NAME ist der Name für diese Signatur.
+
 ####*WHITELIST-SIGNATUREN*
 Alle Whitelist-Signaturen besitzen folgendes Format:
 `HASH:FILESIZE:NAME`
@@ -802,9 +853,9 @@ Legen Sie Ihre eigenen Signaturen nur in den Dateien ab, die dafür vorgesehen s
 ####*AUFSCHLÜSSELUNG DER SIGNATUREN*
 Im Folgenden eine Aufschlüsselung der Signaturen, die von phpMussel genutzt werden:
 - "Normierte ASCII-Signaturen" (ascii_*). Überprüft den Inhalt jeder Datei, die nicht in der Whitelist aufgeführt ist und überprüft werden soll.
-- "Complex Extended Signatures" (coex_*). Mixed signature type matching.
+- "Komplex-Erweitert-Signaturen" (coex_*). Mischsignaturtyp Datei-Überprüfungen.
 - "ELF-Signaturen" (elf_*). Überprüft den Inhalt jeder Datei, die nicht in der Whitelist aufgeführt ist und überprüft werden soll und dem ELF-Format entspricht.
-- "Portable Executable Signaturen" (exe_*). Überprüft den Inhalt jeder Datei, die nicht in der Whitelist aufgeführt ist und überprüft werden soll und dem PE-Format entspricht.
+- "Portable-Executable-Signaturen" (exe_*). Überprüft den Inhalt jeder Datei, die nicht in der Whitelist aufgeführt ist und überprüft werden soll und dem PE-Format entspricht.
 - "Dateinamen-Signaturen" (filenames_*). Überprüft die Dateinamen jeder Datei, die nicht in der Whitelist aufgeführt ist und überprüft werden soll.
 - "Allgemeine Signaturen" (general_*). Überprüft den Inhalt jeder Datei, die nicht in der Whitelist aufgeführt ist und überprüft werden soll.
 - "Grafiksignaturen" (graphics_*). Überprüft den Inhalt jeder Datei, die nicht in der Whitelist aufgeführt ist und überprüft werden soll und einem bekannten Bildformat entspricht.
@@ -816,10 +867,11 @@ Im Folgenden eine Aufschlüsselung der Signaturen, die von phpMussel genutzt wer
 - "Archiv-Metadata-Signaturen" (metadata_*). Überprüft die CRC32-Prüfsumme und Dateigröße der ersten Datei in jedem Archiv, welche nicht in der Whitelist aufgeführt ist und überprüft werden soll.
 - "OLE-Signaturen" (ole_*). Überprüft den Inhalt jeder Objekten, die nicht in der Whitelist aufgeführt ist.
 - "PDF-Signaturen" (pdf_*). Überprüft den Inhalt jeder PDF-Dateien, die nicht in der Whitelist aufgeführt ist.
-- "Portable Executable Sectional Signaturen" (pe_*). Überprüft mittels der Größe und MD5-Hash der PE-Sektionen jeder Datei, die nicht in der Whitelist aufgeführt ist und überprüft werden soll und dem PE-Format entspricht.
-- "SWF-Signaturen" (swf_*). Überprüft den Inhalt jeder Shockwave-Datei, die nicht in der Whitelist aufgeführt ist.
+- "Portable-Executable-Sectional-Signaturen" (pe_*). Überprüft mittels der Größe und MD5-Hash der PE-Sektionen jeder Datei, die nicht in der Whitelist aufgeführt ist und überprüft werden soll und dem PE-Format entspricht.
+- "Portable-Executable-Erweitert-Signaturen" (pex_*). Überprüft mittels der Größe und MD5-Hash der Variablen jeder Datei, die nicht in der Whitelist aufgeführt ist und überprüft werden soll und dem PE-Format entspricht.
+- "Shockwave-Signaturen" (swf_*). Überprüft den Inhalt jeder Shockwave-Datei, die nicht in der Whitelist aufgeführt ist.
 - "Whitelist-Signaturen" (whitelist_*). Überprüft mittels MD5-Hash des Inhalts und der Dateigröße jede Datei. Übereinstimmende Dateien werden immun gegen die Art der Signaturen in dem Whitelist-Eintrag.
-- "XML/XDP-Chunk Signatures" (xmlxdp_*). Überprüft XML/XDP-Datenblöcke aus jeder Datei, die nicht in der Whitelist aufgeführt ist und überprüft werden soll.
+- "XML/XDP-Datenblock-Signaturen" (xmlxdp_*). Überprüft XML/XDP-Datenblöcke aus jeder Datei, die nicht in der Whitelist aufgeführt ist und überprüft werden soll.
 (Beachten Sie, dass jede dieser Signaturen auf einfache Weise in der `phpmussel.ini` deaktiviert werden kann).
 
 ---
@@ -834,7 +886,7 @@ Im Folgenden eine Aufschlüsselung der Signaturen, die von phpMussel genutzt wer
 
 In den meisten Fällen sollte phpMussel mit den meisten anderen Antiviren-Softwareprodukten kompatibel sein. Jedoch wurden in der Vergangenheit Konflikte von anderen Nutzern festgestellt. Die folgenden Informationen stammen von VirusTotal.com, welche einige Fehlalarme von verschiedenen Antiviren-Programmen gegen phpMussel beschreiben. Diese Informationen garantieren nicht, ob Kompatibilitätsprobleme zwischen phpMussel und Ihrem eingesetzten Antiviren-Produkt bestehen. Sollte Ihre Antiviren-Software als problematisch aufgelistet sein, sollten Sie diese entweder vor der Benutzung von phpMussel deaktivieren oder sich andere Alternativen überlegen.
 
-Diese Informationen wurden zuletzt am 2015.05.28 aktualisiert und gelten für alle phpMussel Veröffentlichungen von den beiden letzten Nebenversionen (v0.5-v0.6i) zu diesem Zeitpunkt.
+Diese Informationen wurden zuletzt am 2015.07.09 aktualisiert und gelten für alle phpMussel Veröffentlichungen von den beiden letzten Nebenversionen (v0.6-v0.7a) zu diesem Zeitpunkt.
 
 | Scanner              |  Ergebnisse                          |
 |----------------------|--------------------------------------|
@@ -880,7 +932,7 @@ Diese Informationen wurden zuletzt am 2015.05.28 aktualisiert und gelten für al
 | Rising               |  Keine bekannten Probleme            |
 | Sophos               |  Keine bekannten Probleme            |
 | SUPERAntiSpyware     |  Keine bekannten Probleme            |
-| Symantec             |  Meldet "WS.Reputation.1"            |
+| Symantec             |  Keine bekannten Probleme            |
 | TheHacker            |  Keine bekannten Probleme            |
 | TotalDefense         |  Keine bekannten Probleme            |
 | TrendMicro           |  Keine bekannten Probleme            |
@@ -893,4 +945,4 @@ Diese Informationen wurden zuletzt am 2015.05.28 aktualisiert und gelten für al
 ---
 
 
-Zuletzt aktualisiert: 25. Juli 2015 (2015.07.25).
+Zuletzt aktualisiert: 11. September 2015 (2015.09.11).
